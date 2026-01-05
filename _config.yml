@@ -1,3 +1,24 @@
-theme: minima
-title: The Junk Drawer
-author: BZ
+# Theme
+remote_theme: mmistakes/minimal-mistakes
+
+# Site Settings
+title: "Junk Drawer"
+subtitle: "A dumping ground for thoughts, milestones, and miscellany"
+description: >-
+A barely organized collection of thought and screenshots from my life. If you want a quick overview on what you'll find here, head over the the "About" section. Otherwise feel free to poke around at your own risk.
+
+# Layout defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: true
+
+# Appearance
+minimal_mistakes_skin: "dirt"  # or: air, aqua, contrast, dark, mint, sunrise
