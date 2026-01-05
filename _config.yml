@@ -1,26 +1,7 @@
-# Theme
-remote_theme: mmistakes/minimal-mistakes
-
-# Site Settings
 title: "Junk Drawer"
-subtitle: "A dumping ground for thoughts, milestones, and miscellany"
-description: >-
-  A barely organized collection of thought and screenshots from my life. 
-  If you want a quick overview on what you will find here, head over the the About section. 
-  Otherwise feel free to poke around at your own risk.
+description: "A dumping ground for thoughts, milestones, and other random personal trivia"
 
-# Layout defaults
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: false
-      share: true
-      related: true
+remote_theme: pages-themes/hacker@v0.2.0
 
-# Appearance
-minimal_mistakes_skin: "dark"  # or: air, aqua, contrast, dark, mint, sunrise
+plugins:
+  - jekyll-remote-theme
