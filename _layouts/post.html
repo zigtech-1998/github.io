@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<p style="color: #666; font-size: 0.9em;">
+  Published: {{ page.date | date: "%B %d, %Y" }}
+  {% if page.last_modified %}
+  <br>Last updated: {{ page.last_modified | date: "%B %d, %Y" }}
+  {% endif %}
+</p>
+
+{{ content }}
