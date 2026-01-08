@@ -2,3 +2,6 @@ title: "Junk Drawer"
 description: "A dumping ground for thoughts, milestones, and other random personal trivia"
 author: BZ
 theme: minima
+
+exclude:
+  - CLAUDE.md
