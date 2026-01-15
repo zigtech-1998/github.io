@@ -1,0 +1,199 @@
+---
+---
+
+@import "minima";
+
+/* ===========================================
+   JUNK DRAWER - Scattered Card Layout
+   =========================================== */
+
+:root {
+  --drawer-bg: #f5f1e8;
+  --card-bg: #fffef9;
+  --text-color: #3d3d3d;
+  --accent-brass: #c9a227;
+  --link-green: #5a7a4a;
+  --shadow-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Page background - aged paper feel */
+body {
+  background-color: var(--drawer-bg);
+}
+
+/* Homepage title styling */
+.home-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.home-subtitle {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+/* The drawer - container for scattered cards */
+.junk-drawer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Individual cards - scattered paper effect */
+.drawer-item {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 2px;
+  box-shadow:
+    2px 3px 8px var(--shadow-color),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Scattered rotations - applied via nth-child */
+.drawer-item:nth-child(6n+1) { transform: rotate(-1.5deg); }
+.drawer-item:nth-child(6n+2) { transform: rotate(2deg); }
+.drawer-item:nth-child(6n+3) { transform: rotate(-0.5deg); }
+.drawer-item:nth-child(6n+4) { transform: rotate(1.8deg); }
+.drawer-item:nth-child(6n+5) { transform: rotate(-2.2deg); }
+.drawer-item:nth-child(6n+6) { transform: rotate(0.8deg); }
+
+/* Hover effect - pick up the paper */
+.drawer-item:hover {
+  transform: rotate(0deg) translateY(-4px) !important;
+  box-shadow:
+    4px 6px 16px var(--shadow-color),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Card decorations - tape/pin effect */
+.drawer-item::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(200, 180, 140, 0.7) 0%,
+    rgba(180, 160, 120, 0.5) 100%
+  );
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+/* Alternate decoration styles */
+.drawer-item:nth-child(3n+2)::before {
+  background: linear-gradient(
+    180deg,
+    rgba(180, 200, 180, 0.7) 0%,
+    rgba(160, 180, 160, 0.5) 100%
+  );
+  width: 35px;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.drawer-item:nth-child(3n+3)::before {
+  background: linear-gradient(
+    180deg,
+    rgba(200, 190, 170, 0.7) 0%,
+    rgba(180, 170, 150, 0.5) 100%
+  );
+  width: 45px;
+  transform: translateX(-50%) rotate(2deg);
+}
+
+/* Card content styling */
+.drawer-item h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  color: var(--text-color);
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.drawer-item h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.drawer-item h2 a:hover {
+  color: var(--link-green);
+}
+
+.drawer-item .post-date {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.drawer-item .post-excerpt {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.drawer-item .post-tags {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.drawer-item .post-tags span {
+  background: rgba(201, 162, 39, 0.15);
+  color: #8a7020;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-right: 4px;
+  font-family: monospace;
+}
+
+/* Empty drawer message */
+.drawer-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .junk-drawer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .drawer-item {
+    transform: rotate(0deg) !important;
+  }
+
+  .drawer-item:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+}
+
+/* Footer tweak */
+.site-footer {
+  background: transparent;
+  border-top: 1px dashed #ccc;
+}
