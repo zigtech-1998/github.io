@@ -8,7 +8,7 @@ last_modified: 2026-01-19
 Link to the [original Reddit thread](https://www.reddit.com/r/books/comments/1q1mwfp/nasas_largest_library_to_permanently_close_on_jan/), and a distressing [comment:](https://www.reddit.com/r/books/comments/1q1mwfp/comment/nx6u41m/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
 
 
-*...library staff are working on a 60-day review of the collection and have been reportedly been given permission to save the most rare 10%-15% of it, with the remainder to be picked up by the [General Services Administration](https://www.reddit.com/search/?q=General+Services+Administration&cId=6e95c5c1-d872-4783-a9e8-08c0d7e4c609&iId=2bf6fe08-c6b0-443d-bc2b-db45347d865d)*.
+"*...library staff are working on a 60-day review of the collection and have been reportedly been given permission to save the most rare 10%-15% of it, with the remainder to be picked up by the [General Services Administration](https://www.reddit.com/search/?q=General+Services+Administration&cId=6e95c5c1-d872-4783-a9e8-08c0d7e4c609&iId=2bf6fe08-c6b0-443d-bc2b-db45347d865d)*.
 
 *...the federal government will store some of the collection in warehouses, and trash the rest."*
 
