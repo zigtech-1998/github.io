@@ -26,12 +26,12 @@ layout: default
 
 <nav style="display: flex; justify-content: space-between; font-size: 0.85em;">
   {% if page.previous.url %}
-    <a href="{{ page.previous.url }}">&larr; {{ page.previous.title }}</a>
+    <a href="{{ page.previous.url | relative_url}}">&larr; {{ page.previous.title }}</a>
   {% else %}
     <span></span>
   {% endif %}
   {% if page.next.url %}
-    <a href="{{ page.next.url }}">{{ page.next.title }} &rarr;</a>
+    <a href="{{ page.next.url | relative_url}}">{{ page.next.title }} &rarr;</a>
   {% else %}
     <span></span>
   {% endif %}
