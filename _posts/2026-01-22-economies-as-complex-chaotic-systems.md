@@ -8,10 +8,11 @@ last_modified: 2026-01-22
 Today I finally learned the distinction between "chaotic" and "random".
 
 Per Claude Opus 4.5:
-**The three types of unpredictability:**
+
+"**The three types of unpredictability:**
 1. **Random/stochastic**: Genuinely indeterminate (quantum mechanics, dice rolls)
 2. **Chaotic**: Deterministic rules, but tiny measurement errors explode exponentially (weather, double pendulum)
-3. **Complex**: High-dimensional with many interacting components (may include both chaos and randomness)
+3. **Complex**: High-dimensional with many interacting components (may include both chaos and randomness)"
 
 This is interesting... I always thought 'chaos' or 'chaotic systems' were random. They are not - they are, in fact, completely deterministic. however, they are not practically predictable because they are so extremely sensitive to initial conditions.
 
