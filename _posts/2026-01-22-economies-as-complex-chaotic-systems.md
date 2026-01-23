@@ -16,7 +16,7 @@ Per Claude Opus 4.5:
 This is interesting... I always thought 'chaos' or 'chaotic systems' were random. They are not - they are, in fact, completely deterministic. however, they are not practically predictable because they are so extremely sensitive to initial conditions.
 
 An illustrative example from Claude:
-"""
+
 ***Classic example - the logistic map:***
 
 ```
@@ -24,7 +24,7 @@ x(n+1) = r * x(n) * (1 - x(n))
 ```
 
 *This is a totally deterministic equation. No dice rolls, no probability distributions. Yet for certain values of r, it produces wildly unpredictable, seemingly random output. If you start with x = 0.5000 versus x = 0.5001, the trajectories diverge exponentially.*
-"""
+
 
 This finding stemmed from an interesting thought experiment I came across today at the [e/acc principles substack post](https://beff.substack.com/p/notes-on-eacc-principles-and-tenets)
 ![e/acc economy as chaotic system diagram](/github.io/assets/images/eacc-economy-chaos.png)
