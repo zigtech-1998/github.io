@@ -1,0 +1,18 @@
+---
+layout: post
+title: Slow Productivity
+date: 2026-01-25
+last_modified: 2026-01-25
+---
+
+Started reading [*Slow Productivity* by Cal Newport](https://www.amazon.com/Slow-Productivity-Accomplishment-Without-Burnout/dp/0593544854) this weekend. The first principle, "Do Less", reminded me of this [interesting Reddit thread](https://www.reddit.com/r/Fire/comments/1oopk2c/i_quiet_quit_my_job_a_decade_ago_welp_here_i_am/) I came across on the [FIRE subreddit](https://www.reddit.com/r/Fire/) a while back. After hitting his FIRE number, OP decided to "quiet quit" his job rather than simply retire. To OP's surprise, this strategy lead to several promotions and pay bumps.
+
+What OP calls "quiet quitting" may actually be more closely related to Newport's definition of Slow Productivity. OP hitting FIRE number gave the confidence to employ Slow Productivity principles, which (to OP's surprise) actually increased productive output. This is a good demonstration that Slow Productivity concepts can be implemented with great success in modern office-based settings.
+
+But how will AI impact the *Slow Productivity* approach? Will the AI take most of the "deep thinking" workload, leaving humans scrambling to cram in as much administrative overhead activities as possible to facilitate the AI's deep work? Cal's prediction is almost exactly the opposite. From [Podcast - Managing the Future of Work - Harvard Business School](https://www.hbs.edu/managing-the-future-of-work/podcast/Pages/podcast-details.aspx?episode=6892954714):
+
+"**Newport:** I'm most interested in what the second generation of changes could be. So the first generation is, like we've talked about, it's a natural language interface and the software tools you're already using. The second generation I think is where things get interesting, which is where you could potentially get this model of what I think of as an AI chief of staff. You could take this sort of highly interruptive, hyperactive, hive-mind interaction where we have to constantly be tending to all of these ongoing conversations to keep information flows moving, which is a disaster cognitively. It makes us miserable and terrible at our jobs. If that could be outsourced to AI agents--so my AI agent can talk to your AI agent to get the information I need when I need it--that really could be a major change to what knowledge work jobs are like, and I think would also be an exponential productivity boost. If work moves more toward that, much less time on administrative overhead of my obligations, much more time spent on the actual obligations, themselves, that really would be a revolution. AI can't do this yet. The problem is this requires a planning capability, which requires keeping state and future simulation, none of which is possible in a language model. You need federated models, you need different ensemble of model types. But I know it's a direction that we're probably heading. That second generation of impacts, that really could change the complexion of knowledge work."
+
+The key takeaway: AI will boost productivity (and aid in "slow productivity") by handling & automating the performative "pseudo-productivity" tasks. For example, it will handle and summarize your email conversations, submit work requests, and relieve much of the administrative box-checking burden that knowledge workers were previously obligated to do because it requires some background knowledge/critical thinking without generating anything fundamentally new or insightful or creative. This will free up knowledge workers time to truly focus on slow, creative productivity. And it will even aid in the slow creative productive process.
+
+
