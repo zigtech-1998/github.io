@@ -220,3 +220,128 @@ body {
   background: transparent;
   border-top: 1px dashed #ccc;
 }
+
+/* ==========================================
+   Tags Page Styles
+   ========================================== */
+
+.all-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.tag-chip {
+  display: inline-block;
+  background: rgba(201, 162, 39, 0.15);
+  color: #8a7020;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.tag-chip:hover {
+  background: rgba(201, 162, 39, 0.3);
+  transform: translateY(-2px);
+}
+
+.tag-chip .tag-count {
+  opacity: 0.7;
+  font-size: 0.8em;
+}
+
+.tag-section {
+  margin: 2rem 0;
+}
+
+.tag-header {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  color: var(--text-color);
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tagged-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tagged-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted #eee;
+}
+
+.tagged-post a {
+  color: var(--link-green);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.tagged-post a:hover {
+  text-decoration: underline;
+}
+
+.tagged-post .post-date {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.no-tags {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Post tag links */
+.post-tag-link {
+  color: var(--accent-brass);
+  text-decoration: none;
+}
+
+.post-tag-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   Comments Section Styles
+   ========================================== */
+
+.comments-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px dashed #ccc;
+}
+
+.comments-section h3 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Mobile adjustments for tags */
+@media (max-width: 600px) {
+  .tagged-post {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .tagged-post .post-date {
+    margin-left: 0;
+  }
+}

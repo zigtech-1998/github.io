@@ -3,6 +3,7 @@ layout: post
 title: Economies as Complex Chaotic Systems
 date: 2026-01-22
 last_modified: 2026-01-22
+tags: [economics, complexity, AI]
 ---
 
 Today I finally learned the distinction between "chaotic" and "random".

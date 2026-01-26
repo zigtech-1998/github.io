@@ -3,6 +3,7 @@ layout: post
 title: Artemis Program & NASA Research Library Closure
 date: 2026-01-18
 last_modified: 2026-01-19
+tags: [space, NASA, policy]
 ---
 
 Link to the [original Reddit thread](https://www.reddit.com/r/books/comments/1q1mwfp/nasas_largest_library_to_permanently_close_on_jan/), and a distressing [comment:](https://www.reddit.com/r/books/comments/1q1mwfp/comment/nx6u41m/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)

@@ -3,6 +3,7 @@ layout: post
 title: The Job Market Post-AI Takeover
 date: 2026-01-19
 last_modified: 2026-01-19
+tags: [AI, economics, jobs]
 ---
 
 

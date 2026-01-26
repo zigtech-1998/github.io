@@ -3,6 +3,7 @@ layout: post
 title: Copyright Laws in an AI World
 date: 2026-01-21
 last_modified: 2026-01-21
+tags: [AI, law, copyright]
 ---
 
 How will copyright laws work in an AI world? Who owns the IP if an AI agent invented something or contributed significantly to ideation/implementation?

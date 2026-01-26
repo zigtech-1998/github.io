@@ -1,0 +1,37 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+
+<p style="font-size: 0.85em;"><a href="{{ '/' | relative_url }}">&larr; Back to the drawer</a></p>
+
+<h1>Browse by Tag</h1>
+
+<div class="all-tags">
+  {% assign all_tags = site.posts | map: "tags" | compact | uniq | sort %}
+  {% for tag in site.tags %}
+    <a href="#{{ tag[0] | slugify }}" class="tag-chip">{{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span></a>
+  {% endfor %}
+</div>
+
+<hr style="margin: 2em 0; border: none; border-top: 1px dashed #ccc;">
+
+{% assign sorted_tags = site.tags | sort %}
+{% for tag in sorted_tags %}
+  <section class="tag-section" id="{{ tag[0] | slugify }}">
+    <h2 class="tag-header">{{ tag[0] }}</h2>
+    <div class="tagged-posts">
+      {% for post in tag[1] %}
+        <article class="tagged-post">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endfor %}
+
+{% if site.tags.size == 0 %}
+  <p class="no-tags">No tagged posts yet.</p>
+{% endif %}
