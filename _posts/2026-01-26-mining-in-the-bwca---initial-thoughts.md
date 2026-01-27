@@ -11,7 +11,6 @@ That said, as a subscriber to the [e/acc philosophy](https://beff.substack.com/p
 
 **Benefits:**
 A necessary part of an accurate risk-benefit analysis of this issue is contextualizing the risks with the mine's projected productive output. By the numbers, the Twin Mines project should produce:
-- 
 - jobs
 - net economic revenue/benefit
 - overall U.S. demand for copper and nickel
