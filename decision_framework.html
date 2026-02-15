@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Framework Analyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .step {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+            transform: translateX(4px);
+        }
+        
+        .option.selected {
+            border-color: #667eea;
+            background: #ebf4ff;
+        }
+        
+        .option-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+        
+        .option-desc {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .result {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .result-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .result-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .framework-desc {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .framework-section {
+            margin-bottom: 20px;
+        }
+        
+        .framework-section h3 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .framework-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .framework-section li {
+            padding: 10px 0 10px 28px;
+            color: #4a5568;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        .framework-section li:before {
+            content: "→";
+            position: absolute;
+            left: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .time-indicator {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Decision Framework Analyzer</h1>
+            <p>Find the right framework to crush analysis paralysis</p>
+        </div>
+        
+        <div class="content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            
+            <!-- Step 1: Decision Type -->
+            <div class="step active" id="step1">
+                <div class="question">What type of decision are you facing?</div>
+                <div class="options">
+                    <div class="option" data-value="career-change">
+                        <div class="option-title">Career Change / Job Decision</div>
+                        <div class="option-desc">Switching companies, roles, or career paths</div>
+                    </div>
+                    <div class="option" data-value="project-priority">
+                        <div class="option-title">Project Prioritization</div>
+                        <div class="option-desc">Choosing what to work on next or how to allocate time</div>
+                    </div>
+                    <div class="option" data-value="tech-choice">
+                        <div class="option-title">Technical Choice</div>
+                        <div class="option-desc">Tech stack, tools, architecture decisions</div>
+                    </div>
+                    <div class="option" data-value="design-tradeoff">
+                        <div class="option-title">Design Trade-off</div>
+                        <div class="option-desc">Feature vs complexity, performance vs maintainability</div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn-primary" id="next1" disabled>Next →</button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Constraints -->
+            <div class="step" id="step2">
+                <div class="question">What's your biggest constraint?</div>
+                <div class="options">
+                    <div class="option" data-value="time">
+                        <div class="option-title">⏰ Time Pressure</div>
+                        <div class="option-desc">Need to decide quickly, limited research time</div>
+                    </div>
+                    <div class="option" data-value="reversibility">
+                        <div class="option-title">🔒 Hard to Reverse</div>
+                        <div class="option-desc">High stakes, difficult or costly to undo</div>
+                    </div>
+                    <div class="option" data-value="information">
+                        <div class="option-title">📊 Incomplete Information</div>
+                        <div class="option-desc">Can't get all the data you'd like</div>
+                    </div>
+                    <div class="option" data-value="multiple-goals">
+                        <div class="option-title">🎯 Competing Goals</div>
+                        <div class="option-desc">Multiple important factors pulling different directions</div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn-secondary" id="back2">← Back</button>
+                    <button class="btn-primary" id="next2" disabled>Next →</button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Team Context -->
+            <div class="step" id="step3">
+                <div class="question">Who needs to be aligned on this decision?</div>
+                <div class="options">
+                    <div class="option" data-value="solo">
+                        <div class="option-title">Just Me</div>
+                        <div class="option-desc">Personal decision, I own the outcome</div>
+                    </div>
+                    <div class="option" data-value="small-team">
+                        <div class="option-title">Small Team (2-5 people)</div>
+                        <div class="option-desc">Need buy-in from a few key people</div>
+                    </div>
+                    <div class="option" data-value="stakeholders">
+                        <div class="option-title">Multiple Stakeholders</div>
+                        <div class="option-desc">Need to document rationale for broader audience</div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn-secondary" id="back3">← Back</button>
+                    <button class="btn-primary" id="next3" disabled>See My Framework →</button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="step" id="results">
+                <div class="result">
+                    <div class="result-header">
+                        <div class="result-icon" id="resultIcon">⚡</div>
+                        <div class="result-title" id="resultTitle">Your Framework</div>
+                    </div>
+                    <div class="time-indicator" id="timeIndicator">⏱️ Decision Time: 15-30 min</div>
+                    <div class="framework-desc" id="frameworkDesc"></div>
+                    
+                    <div class="framework-section">
+                        <h3>🎯 How to Use It</h3>
+                        <ul id="howToUse"></ul>
+                    </div>
+                    
+                    <div class="framework-section">
+                        <h3>💡 Pro Tips</h3>
+                        <ul id="proTips"></ul>
+                    </div>
+                    
+                    <div class="framework-section">
+                        <h3>⚠️ Watch Out For</h3>
+                        <ul id="watchOut"></ul>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn-secondary" id="restart">← Start Over</button>
+                    <button class="btn-primary" id="export">Download Summary</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            step: 1,
+            answers: {}
+        };
+        
+        const frameworks = {
+            // Career decisions
+            'career-change-time-solo': {
+                title: '2x2 Regret Minimization',
+                icon: '🎯',
+                time: '15-20 min',
+                desc: 'Jeff Bezos\' framework: imagine yourself at 80 looking back. Which choice minimizes regret? Perfect for high-stakes personal career decisions under time pressure.',
+                howTo: [
+                    'Write down the decision clearly in one sentence',
+                    'For each option, ask: "Will I regret NOT doing this when I\'m 80?"',
+                    'Rate regret intensity (1-10) for each path not taken',
+                    'Choose the path with the highest regret if not taken',
+                    'Set a 24-hour timer to let it simmer, then commit'
+                ],
+                tips: [
+                    'Focus on regret of inaction vs action - most career regrets are missed opportunities',
+                    'Consider second-order effects: what doors does each choice open/close?',
+                    'If regret scores are close (±2), flip a coin - either choice is fine'
+                ],
+                watchOut: [
+                    'Don\'t overthink the 80-year-old perspective - trust your gut reaction',
+                    'Avoid letting current comfort bias you toward status quo',
+                    'This works for YOU - don\'t need external validation for personal career moves'
+                ]
+            },
+            'career-change-reversibility-solo': {
+                title: 'ICE Framework + Reversibility Test',
+                icon: '🧊',
+                time: '20-30 min',
+                desc: 'Score options on Impact, Confidence, and Ease, then add a reversibility check. Optimized for high-stakes career decisions.',
+                howTo: [
+                    'List 2-4 realistic options',
+                    'Score each on Impact (career growth potential, 1-10)',
+                    'Score Confidence (how sure you are it\'ll work out, 1-10)',
+                    'Score Ease (how easy to execute, 1-10)',
+                    'Calculate ICE score: (Impact × Confidence) / Ease',
+                    'For top option: ask "Can I reverse this in 12-24 months if wrong?"',
+                    'If not easily reversible, multiply ICE by 1.5x threshold requirement'
+                ],
+                tips: [
+                    'Weight Impact 2x if optimizing for long-term career trajectory',
+                    'Low Confidence isn\'t always bad - calculated risks can pay off big',
+                    'Consider doing a "mini-test" before full commitment (consulting project, trial period)'
+                ],
+                watchOut: [
+                    'Don\'t let perfect be enemy of good - 80% confidence is plenty',
+                    'Reversibility isn\'t just about going back - it\'s about maintaining options',
+                    'If all scores are similar, you\'re overthinking - just pick one and commit'
+                ]
+            },
+            'career-change-information-stakeholders': {
+                title: 'Weighted Decision Matrix',
+                icon: '📊',
+                time: '45-60 min',
+                desc: 'Systematic scoring across multiple criteria with stakeholder input. Best when you need to justify decisions and have incomplete information.',
+                howTo: [
+                    'Define 5-7 key criteria (salary, growth, culture, location, mission, etc.)',
+                    'Assign weights to each criterion (must sum to 100%)',
+                    'Score each option 1-10 on each criterion',
+                    'Multiply scores by weights and sum for total score',
+                    'Share matrix with key stakeholders for input/validation',
+                    'Run sensitivity analysis: change top 2 weights ±20% and see if winner changes'
+                ],
+                tips: [
+                    'Be honest about what you really value - don\'t weight things "should" matter',
+                    'Get stakeholder input on weights, not just scores - reveals value differences',
+                    'If winner is obvious after scoring, trust it - you\'ve done the work',
+                    'Document assumptions clearly - helps when explaining to others later'
+                ],
+                watchOut: [
+                    'Analysis paralysis trap: don\'t add more criteria if first 5-7 don\'t clarify',
+                    'Gut check the winner - if it feels wrong, examine your criteria/weights',
+                    'Stakeholders can help with blind spots but don\'t need veto power'
+                ]
+            },
+            // Project prioritization
+            'project-priority-time-solo': {
+                title: 'Eisenhower Matrix (Speed Version)',
+                icon: '⚡',
+                time: '10-15 min',
+                desc: 'Rapid 2x2 triage: Urgent/Important. When you have too many things and need to pick NOW.',
+                howTo: [
+                    'Draw a 2x2: Important vs Urgent axes',
+                    'Dump all projects/tasks onto the matrix (5 min max)',
+                    'Important + Urgent = Do NOW (today/this week)',
+                    'Important + Not Urgent = Schedule (block time this month)',
+                    'Not Important + Urgent = Delegate or minimize time',
+                    'Not Important + Not Urgent = Delete ruthlessly'
+                ],
+                tips: [
+                    'Important = moves you toward 5-year goals (career, $150K+, part-time transition)',
+                    'Urgent = someone else\'s deadline, usually external pressure',
+                    'Most people over-index on Urgent - be honest about what\'s actually Important',
+                    'Aim for 60% of time in Important/Not Urgent quadrant'
+                ],
+                watchOut: [
+                    'Don\'t let Urgent crowd out Important - this kills long-term progress',
+                    'If everything feels Important+Urgent, you need better boundaries or scope reduction',
+                    'Review weekly - priorities shift, don\'t let this matrix get stale'
+                ]
+            },
+            'project-priority-multiple-goals-small-team': {
+                title: 'RICE Scoring',
+                icon: '🌾',
+                time: '30-45 min',
+                desc: 'Reach × Impact × Confidence / Effort. Product management framework adapted for project prioritization with team input.',
+                howTo: [
+                    'List all candidate projects',
+                    'Estimate Reach: how many people/systems affected?',
+                    'Score Impact: how much does it move key metrics? (0.25=minimal, 3=massive)',
+                    'Estimate Confidence: how sure are you? (percentage)',
+                    'Estimate Effort: person-weeks of work',
+                    'Calculate RICE = (Reach × Impact × Confidence) / Effort',
+                    'Get team gut-check on top 3 scores'
+                ],
+                tips: [
+                    'Use T-shirt sizing (S/M/L) for Effort if estimates are fuzzy',
+                    'Impact should align with YOUR goals - revenue, learning, visibility, etc.',
+                    'Low-confidence isn\'t a deal-breaker if Impact is huge - consider doing a spike/prototype',
+                    'Confidence < 50% = you need more discovery before committing'
+                ],
+                watchOut: [
+                    'Don\'t game the scores - honesty > optimistic projections',
+                    'High RICE doesn\'t mean do it first - check dependencies and sequencing',
+                    'Rerun monthly - Confidence and Effort estimates improve with learning'
+                ]
+            },
+            'project-priority-reversibility-stakeholders': {
+                title: 'Impact-Effort Matrix + One-Way Door Test',
+                icon: '🚪',
+                time: '30-40 min',
+                desc: 'Plot projects on Impact vs Effort, then flag irreversible "one-way doors" for extra scrutiny.',
+                howTo: [
+                    'Plot all projects on 2x2: Impact (Y-axis) vs Effort (X-axis)',
+                    'Quick wins = High Impact, Low Effort → do first',
+                    'Major projects = High Impact, High Effort → plan carefully',
+                    'Fill-ins = Low Impact, Low Effort → do in spare time or delegate',
+                    'Time sinks = Low Impact, High Effort → kill immediately',
+                    'Flag any "one-way doors" (hard to reverse) with ⚠️',
+                    'One-way doors need 2x the Impact to justify vs reversible options'
+                ],
+                tips: [
+                    'Start with Quick Wins for momentum and learning',
+                    'Major Projects need stakeholder alignment - show them this matrix',
+                    'One-way doors: vendor lock-in, architectural decisions, team commitments',
+                    'If unsure about reversibility, assume it\'s one-way (safer)'
+                ],
+                watchOut: [
+                    'Don\'t do Fill-ins just because they\'re easy - time is finite',
+                    'Impact should be measured against your strategic goals, not just "nice to have"',
+                    'Stakeholders may disagree on Impact - make criteria explicit upfront'
+                ]
+            },
+            // Technical choices
+            'tech-choice-time-solo': {
+                title: 'Default to Boring + Spike Test',
+                icon: '🔧',
+                time: '15-30 min',
+                desc: 'Choose the proven, boring tech unless new tech proves itself in a time-boxed spike. Optimized for speed.',
+                howTo: [
+                    'Identify the "boring" default (most common, proven, team knows it)',
+                    'Identify the "new/shiny" alternative you\'re considering',
+                    'Ask: Does new tech solve a problem boring tech can\'t? (If no → boring wins)',
+                    'If yes: Time-box a 2-4 hour spike to test critical assumption',
+                    'Spike passes → consider new tech. Spike fails or unclear → boring tech wins.',
+                    'Decide within 24 hours of spike completion'
+                ],
+                tips: [
+                    'Boring is fast: less learning curve, more Stack Overflow answers, easier hiring',
+                    'New tech cost: learning, debugging, community support, future maintenance',
+                    'Good reasons for new tech: 10x performance, impossible in current stack, strategic upskilling',
+                    'Bad reasons: resume-driven development, HackerNews hype, "might need it later"'
+                ],
+                watchOut: [
+                    'Sunk cost trap: don\'t extend spike just because you\'ve started',
+                    'Shiny object syndrome: new tech always looks appealing in tutorials',
+                    'Your time is valuable - boring tech lets you ship faster'
+                ]
+            },
+            'tech-choice-reversibility-stakeholders': {
+                title: 'ADR (Architecture Decision Record)',
+                icon: '📝',
+                time: '45-60 min',
+                desc: 'Document Context, Decision, Consequences. Perfect for hard-to-reverse technical choices that need stakeholder alignment.',
+                howTo: [
+                    'Title: "ADR-XXX: [Short decision title]"',
+                    'Status: Proposed → Accepted/Rejected',
+                    'Context: What forces are at play? Constraints, requirements, alternatives considered',
+                    'Decision: What we\'re doing and why (2-3 paragraphs)',
+                    'Consequences: What becomes easier/harder? Risks? Future flexibility?',
+                    'Share with stakeholders for async review (24-48hr window)',
+                    'If no major objections, mark Accepted and commit'
+                ],
+                tips: [
+                    'Keep ADRs short - 1 page max. Long ADRs don\'t get read.',
+                    'Focus on trade-offs, not selling the decision - acknowledge downsides',
+                    'Link to spike/prototype code if you built one',
+                    'ADRs are permanent record - own the decision, even if it goes sideways later',
+                    'Template: https://adr.github.io/'
+                ],
+                watchOut: [
+                    'Don\'t write ADR alone - get 1-2 colleagues to gut-check before sharing widely',
+                    'Avoid analysis paralysis - if you can\'t decide after ADR, do smallest reversible step',
+                    'Stakeholder silence ≠ agreement. Explicitly ask for approval/concerns.'
+                ]
+            },
+            'tech-choice-information-small-team': {
+                title: 'Tech Radar Mapping',
+                icon: '📡',
+                time: '30-45 min',
+                desc: 'Classify technologies as Adopt/Trial/Assess/Hold. Great when you have incomplete info and need team consensus.',
+                howTo: [
+                    'Draw four concentric circles: Adopt (center), Trial, Assess, Hold (outer)',
+                    'Adopt = proven, recommend for production, team knows it well',
+                    'Trial = promising, use for non-critical projects, build expertise',
+                    'Assess = watch closely, not ready yet, maybe spike in 6 months',
+                    'Hold = avoid or actively migrate away from',
+                    'Plot candidate tech on the radar with team input',
+                    'Decision rule: Only "Adopt" tier goes into critical path'
+                ],
+                tips: [
+                    'Update Tech Radar quarterly - things move fast',
+                    'Be opinionated: better to have clear Hold decisions than wishy-washy Assess',
+                    'Adopt tier should be small (5-8 core technologies)',
+                    'Trial tier is your learning lab - budget time for experimentation',
+                    'ThoughtWorks publishes a public Tech Radar - use for inspiration'
+                ],
+                watchOut: [
+                    'Don\'t let Assess pile up - force Promote to Trial or Demote to Hold annually',
+                    'Team disagreement on Adopt/Hold is a red flag - dig into why',
+                    'Incomplete info is fine for Assess/Trial - you\'re explicitly experimenting'
+                ]
+            },
+            // Design trade-offs
+            'design-tradeoff-time-solo': {
+                title: 'Reversibility Heuristic',
+                icon: '🔄',
+                time: '10-15 min',
+                desc: 'Jeff Bezos\' Type 1 vs Type 2 decisions. Fast framework for design trade-offs under time pressure.',
+                howTo: [
+                    'Ask: Is this a one-way door (Type 1) or two-way door (Type 2)?',
+                    'Type 1 (irreversible): database schema, public API contracts, data formats',
+                    'Type 2 (reversible): UI layouts, algorithm choice, feature flags',
+                    'Type 2 → make decision fast (80% confidence), ship it, iterate',
+                    'Type 1 → slow down, get 2-3 colleague opinions, sleep on it',
+                    'For Type 2: decide within 1 hour. For Type 1: decide within 1 day.'
+                ],
+                tips: [
+                    'Most decisions are Type 2 (reversible) - people overthink them',
+                    'Use feature flags aggressively to make more decisions reversible',
+                    'Type 1 decisions get easier with experience - trust your pattern matching',
+                    'If genuinely stuck on Type 2, flip a coin - either is fine'
+                ],
+                watchOut: [
+                    'Don\'t disguise Type 1 as Type 2 to move faster - tech debt accumulates',
+                    'Also don\'t over-rotate on "what if" scenarios that aren\'t real constraints yet',
+                    'Reversibility costs time/money - factor that in for tight deadlines'
+                ]
+            },
+            'design-tradeoff-multiple-goals-small-team': {
+                title: 'Trade-off Sliders',
+                icon: '🎚️',
+                time: '20-30 min',
+                desc: 'Visualize competing goals on sliders, get team alignment on where to land. Perfect for feature vs complexity battles.',
+                howTo: [
+                    'Identify 3-4 competing dimensions (e.g., Performance vs Simplicity, Features vs Maintainability)',
+                    'Draw each as a slider from 0-10',
+                    'Plot current state on each slider',
+                    'Each team member independently plots where they think you should land',
+                    'Discuss discrepancies - why do people value dimensions differently?',
+                    'Converge on shared target state',
+                    'Design to hit targets on 2-3 sliders, accept trade-offs on others'
+                ],
+                tips: [
+                    'Common sliders: Performance, Simplicity, Features, Time-to-Ship, Maintainability, User Experience',
+                    'You can\'t max out all sliders - explicit trade-offs beat implicit ones',
+                    'Team alignment on sliders = alignment on design direction',
+                    'If team wants conflicting positions, escalate to product owner for tiebreaker'
+                ],
+                watchOut: [
+                    'Don\'t add more than 5 sliders - cognitive overload kills this exercise',
+                    'Be honest about current state - wishful thinking doesn\'t help',
+                    'If everyone agrees quickly, you might be discussing the wrong trade-off'
+                ]
+            },
+            'design-tradeoff-reversibility-stakeholders': {
+                title: 'Decision Tree + Contingency',
+                icon: '🌳',
+                time: '45-60 min',
+                desc: 'Map decision branches, assign probabilities, plan fallbacks. Best for high-stakes, hard-to-reverse design choices.',
+                howTo: [
+                    'Start with core decision: what are the 2-3 main options?',
+                    'For each option, map 2nd-order consequences (what happens next?)',
+                    'Assign rough probabilities to branches based on best guess',
+                    'Identify "bad outcome" branches - what goes wrong?',
+                    'For each bad outcome, define: How will we know? What\'s our fallback?',
+                    'Choose the option with best expected value AND acceptable worst-case',
+                    'Document decision tree + contingencies for stakeholders'
+                ],
+                tips: [
+                    'Don\'t need perfect probabilities - 60/30/10 is fine for 3 branches',
+                    'Best option often has moderate upside but great fallback plan',
+                    'Fallbacks should be cheap to execute if needed - predefine trigger conditions',
+                    'Share tree with stakeholders - shows you\'ve thought through risks'
+                ],
+                watchOut: [
+                    'Analysis paralysis: stop at 2 levels of branches, don\'t go deeper',
+                    'If worst-case is truly catastrophic and irreversible, don\'t take that path',
+                    'Probabilities are educated guesses - don\'t over-optimize on made-up numbers'
+                ]
+            },
+            // Fallback framework
+            'default': {
+                title: 'Pros/Cons + Gut Check',
+                icon: '⚖️',
+                time: '15-20 min',
+                desc: 'Classic framework that works for most decisions. List pros/cons, then trust your gut reaction.',
+                howTo: [
+                    'Draw a T-chart: Pros on left, Cons on right',
+                    'Set 5-minute timer, brain dump everything',
+                    'Group similar items, eliminate duplicates',
+                    'Star the 3 most important items on each side',
+                    'If pros clearly outweigh cons → do it. If cons outweigh pros → don\'t.',
+                    'If close: flip a coin. Notice your reaction. Hoping for heads or tails? That\'s your answer.'
+                ],
+                tips: [
+                    'Not all pros/cons are equal - use stars or weights for big ones',
+                    'Include both rational (data) and emotional (gut feel) items',
+                    'Coin flip trick works because it reveals what you actually want',
+                    'If you need to justify decision to others, this chart is your backup'
+                ],
+                watchOut: [
+                    'Don\'t artificially balance the list - be honest about asymmetries',
+                    'Cons often get inflated due to loss aversion - double-check if they\'re real',
+                    'If you\'re still stuck after coin flip, you need more information - go get it'
+                ]
+            }
+        };
+        
+        function getFrameworkKey(answers) {
+            const type = answers.decisionType;
+            const constraint = answers.constraint;
+            const team = answers.team;
+            
+            const key = `${type}-${constraint}-${team}`;
+            
+            // Return exact match if exists, otherwise fallback
+            return frameworks[key] || frameworks['default'];
+        }
+        
+        function updateProgress() {
+            const progress = (state.step / 3) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+        
+        function showStep(stepNum) {
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + stepNum).classList.add('active');
+            state.step = stepNum;
+            updateProgress();
+        }
+        
+        function showResults() {
+            const framework = getFrameworkKey(state.answers);
+            
+            document.getElementById('resultIcon').textContent = framework.icon;
+            document.getElementById('resultTitle').textContent = framework.title;
+            document.getElementById('timeIndicator').textContent = `⏱️ Decision Time: ${framework.time}`;
+            document.getElementById('frameworkDesc').textContent = framework.desc;
+            
+            const howToUse = document.getElementById('howToUse');
+            howToUse.innerHTML = '';
+            framework.howTo.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                howToUse.appendChild(li);
+            });
+            
+            const proTips = document.getElementById('proTips');
+            proTips.innerHTML = '';
+            framework.tips.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                proTips.appendChild(li);
+            });
+            
+            const watchOut = document.getElementById('watchOut');
+            watchOut.innerHTML = '';
+            framework.watchOut.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                watchOut.appendChild(li);
+            });
+            
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            document.getElementById('results').classList.add('active');
+            updateProgress();
+        }
+        
+        // Option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const parent = this.closest('.step');
+                parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const stepId = parent.id;
+                const value = this.dataset.value;
+                
+                if (stepId === 'step1') {
+                    state.answers.decisionType = value;
+                    document.getElementById('next1').disabled = false;
+                } else if (stepId === 'step2') {
+                    state.answers.constraint = value;
+                    document.getElementById('next2').disabled = false;
+                } else if (stepId === 'step3') {
+                    state.answers.team = value;
+                    document.getElementById('next3').disabled = false;
+                }
+            });
+        });
+        
+        // Navigation
+        document.getElementById('next1').addEventListener('click', () => showStep(2));
+        document.getElementById('back2').addEventListener('click', () => showStep(1));
+        document.getElementById('next2').addEventListener('click', () => showStep(3));
+        document.getElementById('back3').addEventListener('click', () => showStep(2));
+        document.getElementById('next3').addEventListener('click', showResults);
+        document.getElementById('restart').addEventListener('click', () => {
+            state.answers = {};
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('.btn-primary').forEach(btn => btn.disabled = true);
+            showStep(1);
+        });
+        
+        document.getElementById('export').addEventListener('click', () => {
+            const framework = getFrameworkKey(state.answers);
+            let text = `DECISION FRAMEWORK: ${framework.title}\n\n`;
+            text += `Time Needed: ${framework.time}\n\n`;
+            text += `Description:\n${framework.desc}\n\n`;
+            text += `HOW TO USE:\n`;
+            framework.howTo.forEach((item, i) => text += `${i+1}. ${item}\n`);
+            text += `\nPRO TIPS:\n`;
+            framework.tips.forEach(item => text += `• ${item}\n`);
+            text += `\nWATCH OUT FOR:\n`;
+            framework.watchOut.forEach(item => text += `• ${item}\n`);
+            
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `decision-framework-${framework.title.toLowerCase().replace(/\s+/g, '-')}.txt`;
+            a.click();
+        });
+        
+        updateProgress();
+    </script>
+</body>
+</html>
