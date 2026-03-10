@@ -6,7 +6,7 @@ last_modified: 2026-03-09
 ---
 
 
-Found [this tweet when](https://x.com/lichthauch/status/2020542586121822279?s=46) filtering the random scatter in my Obsidian vault today:
+Found [this tweet](https://x.com/lichthauch/status/2020542586121822279?s=46) when filtering the random scatter in my Obsidian vault today:
 
 > ![image](/github.io/assets/images/life-lessons-from-twitter-pasted-image-20260307133217.png)
 
