@@ -1,0 +1,21 @@
+name: Scheduled Rebuild
+
+# Rebuild site daily to publish scheduled posts
+on:
+  schedule:
+    # Runs at 6:00 AM UTC every day (adjust to your timezone)
+    # For US Eastern: 6 AM UTC = 1 AM EST / 2 AM EDT
+    # For US Pacific: 6 AM UTC = 10 PM PST / 11 PM PDT (previous day)
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger GitHub Pages rebuild
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/pages/builds
