@@ -12,7 +12,7 @@ The companion paper cited in the policy brief measures AI output as "the generat
 ![2026 05 28 Fig 1  AI Production Outline, Korinek et al, 2026](/github.io/assets/images/ai-gdp-and-goodharts-law-2026-05-28-fig-1--ai-production-outline-korinek-et-al-2026.png)
 
 This model captures the flow of AI CapEx (infrastructure and model investment) and OpEx (electrical power) through to AI inference output. Like any product unconstrained by regulators in a free market economy, investment by profit-driven entrepreneurs is increasing the quality of the product while simultaneously decreasing the price. The policy brief claims that "AI compute spending grew by more than 140 percent per year each in 2024 and 2025, raw compute capacity by more than 200 percent per year, and quality-adjusted AI output by more than 2,000 percent per year." This claim is supported by **Figure 2** in the companion paper:
-![[2026-05-28 Fig 2 - Price of inference tokens.png|697]]
+![2026 05 28 Fig 2 - Price of inference tokens](/github.io/assets/images/ai-gdp-and-goodharts-law-2026-05-28-fig-2--price-of-inference-tokens.png)
 
 Ok, great - we've established that AI is yet another example of a free enterprise system increasing quality and decreasing prices of valuable products. It is growing rapidly, with significant capital influx and an apparent increase in quality output per unit spend. Despite this data from the paper itself, the policy brief opens with a shocking statement:
 
