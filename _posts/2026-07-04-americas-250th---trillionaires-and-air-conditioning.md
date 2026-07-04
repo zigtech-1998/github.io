@@ -5,18 +5,17 @@ date: 2026-07-04
 last_modified: 2026-07-04
 ---
 
-
-[The Case for Progressive Patriotism - Coleman Hughes](https://www.thefp.com/p/coleman-hughes-progressive-patriotism-america)
-
 Almost every major news outlet has been releasing a regular cadence of pieces centered around America's 250th birthday this year. In honor of the occasion, [Coleman Hughes penned this piece for The Free Press](https://www.thefp.com/p/coleman-hughes-progressive-patriotism-america) making the case that, while not perfect, the USA is till the best (and most progressive) place on the planet.
 
 >"If we compare America to an imagined utopia, then it is a racist, exploitative hellscape. But if we compare it to the world as it actually is, America is one of the most progressive cultures on Earth."
->	- Coleman Hughes, [The Case for Progressive Patriotism](https://www.thefp.com/p/coleman-hughes-progressive-patriotism-america)
+>	
+>   - Coleman Hughes, [The Case for Progressive Patriotism](https://www.thefp.com/p/coleman-hughes-progressive-patriotism-america)
 
 The piece goes on to list several datapoints supporting the theses that American society is the best in the world for demographics Progressives value most (immigrants, racial minorities, women, etc). For example, [Gallup data](https://news.gallup.com/poll/708614/desire-migrate-drops-new-low.aspx) show that America is still the top destination for would-be immigrants worldwide. Additionally, the U.S. despite our Latin-American neighbors also having minority black populations. Finally, America is comparatively much more accepting of the LGBTQ+ demographic than most other countries around the world, particularly the Middle East. Don't just take my word for it:
 
 > "Finally, consider Africa and the Middle East. One need only look at [Pew data](https://www.pewresearch.org/global/2020/06/25/global-divide-on-homosexuality-persists/) on tolerance of gays and lesbians in Africa to understand that America is a progressive haven by comparison. As for the Middle East’s attitude toward progressive values, consider that [the word](https://www.ynetnews.com/article/4906568) _[abeed](https://www.ynetnews.com/article/4906568),_ literally meaning “slave,” is still used to refer to blacks in the Middle East today. As recently as 2017, an AP article noted that the black neighborhood in Jerusalem is [referred to](https://www.ynetnews.com/article/4906568) by many Palestinians in Arabic as _habs al-abeed,_ or the “slaves; prison.”
-> 	- Coleman Hughes, [The Case for Progressive Patriotism](https://www.thefp.com/p/coleman-hughes-progressive-patriotism-america)
+> 	
+>   - Coleman Hughes, [The Case for Progressive Patriotism](https://www.thefp.com/p/coleman-hughes-progressive-patriotism-america)
 
 Hughes uses these & similar datapoints to make a compelling argument for Progressive Patriotism - the idea that Progressives should be proud of our American experiment because it has produced the most progressive society in world history. I'd like to make a couple additions to Hughes' case for Progressive Patriotism: trillionaires and air conditioning. Both of these things are extremely good for the demographics that progressives care about the most, and America is uniquely good at producing both of these things. The world's only trillionaire is American, and countless testimonies from European football fans at the FIFA World Cup confirm America's comparative advantage in indoor climate control.
 
