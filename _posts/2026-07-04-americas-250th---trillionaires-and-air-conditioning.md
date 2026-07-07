@@ -29,7 +29,8 @@ I think the Air conditioning argument is more self-explanatory. Cheap access to 
 
 While we still plenty of problems, its worth celebrating, at least once a year, the fact that there is no other place in the world that represents a "more perfect union" for all races and creeds than the US of A. So today, let's be thankful for our wealth and for our AC, and leave the arguing & problem solving for a different day.
 
-06-July-2026 Addendum:
+*06-July-2026 Addendum*:
+
 From [Ilya Somin]([url](https://reason.com/volokh/2019/07/04/the-case-against-the-case-against-the-american-revolution/)), courtesy of [Tyler Cowen at the Marginal Revolution Blog]([url](https://marginalrevolution.com/marginalrevolution/2026/07/ilya-somin-defends-the-american-revolution.html)):
 
 > 1. Far from retarding the abolition of slavery, the Revolution actually accelerated it. Its triumph gave a big boost to Enlightenment liberalism, which inspired the First Emancipation in the US (the abolition of slavery in the North that became the first large-scale emancipation of slaves in modern history), and boosted antislavery movements in Europe, as well.
