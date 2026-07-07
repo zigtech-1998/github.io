@@ -28,3 +28,14 @@ One thing worth emphasizing here is that this wealth was truly *created*. It was
 I think the Air conditioning argument is more self-explanatory. Cheap access to AC is most important for lower-income people, who tend to be the demographics that progressives value the most. This cheap AC not only allows people to stay comfortable, but it is also critical for lowers the risk of death from heat exposure. Europe's infrastructure cannot provide this cheap AC like the American machine can, and [this cost is measured in lives](https://www.politico.eu/article/why-europe-heat-waves-are-still-so-deadly/).
 
 While we still plenty of problems, its worth celebrating, at least once a year, the fact that there is no other place in the world that represents a "more perfect union" for all races and creeds than the US of A. So today, let's be thankful for our wealth and for our AC, and leave the arguing & problem solving for a different day.
+
+06-July-2026 Addendum:
+From [Ilya Somin]([url](https://reason.com/volokh/2019/07/04/the-case-against-the-case-against-the-american-revolution/)), courtesy of [Tyler Cowen at the Marginal Revolution Blog]([url](https://marginalrevolution.com/marginalrevolution/2026/07/ilya-somin-defends-the-american-revolution.html)):
+
+> 1. Far from retarding the abolition of slavery, the Revolution actually accelerated it. Its triumph gave a big boost to Enlightenment liberalism, which inspired the First Emancipation in the US (the abolition of slavery in the North that became the first large-scale emancipation of slaves in modern history), and boosted antislavery movements in Europe, as well.
+>
+> 2. Had the Revolution been defeated, Enlightenment liberal ideology would have been dealt a setback in Britain and France, too. That would have set back antislavery movements there, as well. It is no accident that many antislavery leaders in Europe were also sympathizers with the American Revolution. The Marquis de Lafayette was just one of the most famous examples of European liberals who actively backed both.
+>
+> 3. The West Indian slaveowner lobby in Parliament was strong enough to block abolition of slavery until 1833. Had Britain also been saddled with the much larger proslavery lobby of the American South, it would have taken far longer. Especially when you combine the impact of the larger slavery lobby with the force of point 2 above.
+
+Not related to trillionaires or air conditioning, but more strong points illustrating America as the most progressive country in the world.
